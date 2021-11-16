@@ -14,11 +14,10 @@
 
 let str = 'Каждый охотник желает знать, где сидит фазан.'
 
-function firstChar(value, index, arr) {
-    if (index == 0) return true
-    else return arr[index - 1] === ' '
-}
+let arr = str.split('')
 
-let array = [].filter.call(str, firstChar)
+let res = arr.filter((elem, i) => {
+    return arr[i - 1] == ' ' || i == 0
+})
 
-console.log(array)
+console.log(res)
