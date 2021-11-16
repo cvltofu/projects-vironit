@@ -1,5 +1,3 @@
-console.log(one(plus(two())))
-
 let plus = (number1) => {
     return (number2) => number1 + number2
 }
@@ -40,3 +38,5 @@ let eight = (callback) => {
 let nine = (callback) => {
     return callback ? callback(9) : 9
 }
+
+console.log(one(plus(two())))
