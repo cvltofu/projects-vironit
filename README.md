@@ -1,5 +1,7 @@
 # projects-vironit
 
+https://docs.google.com/document/d/1yqnJHWBxxE0Qq3j-0fvkuYsXnwuwH6ihe9mGjnRi6vY/edit# - задания
+
 Почитать:
 Restfull архитектура, http, сокеты,
 Query string parameters, rest.api, client-server
