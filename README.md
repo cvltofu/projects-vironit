@@ -6,6 +6,9 @@ https://docs.google.com/document/d/1yqnJHWBxxE0Qq3j-0fvkuYsXnwuwH6ihe9mGjnRi6vY/
 Restfull архитектура, http, сокеты,
 Query string parameters, rest.api, client-server
 
+https://www.youtube.com/watch?v=aQkgUUmUJy4&list=PLqKQF2ojwm3l4oPjsB9chrJmlhZ-zOzWT&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BB%D0%B5%D0%BD%D0%9C%D0%B8%D0%BD%D0%B8%D0%BD
+- всякое нужное
+
 https://www.youtube.com/c/UlbiTV/videos - алгоритмы
 
 https://www.youtube.com/watch?v=8aGhZQkoFbQ&ab_channel=JSConf - видос про эвент луп на русском
