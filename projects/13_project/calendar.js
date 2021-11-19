@@ -1,12 +1,21 @@
-let table =
-    '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>'
-let month, year, date
+let month = new Date().getMonth(),
+    year = new Date().getFullYear(),
+    date
 
-function setDate() {
-    month = prompt('Введите номер месяца: ') - 1
-    year = prompt('Введите год: ')
-    date = new Date(year, month)
-}
+const monthTitles = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+]
 
 function getDay(date) {
     day = date.getDay()
@@ -15,15 +24,18 @@ function getDay(date) {
 }
 
 function createCalendar() {
+    date = new Date(year, month)
+    let table = '<tr>'
     ;(function () {
         fillBefore()
         fillWithDate()
         fillAfter()
     })()
+    table += '</tr>'
 
-    table += '</tr></table>'
-
-    return table
+    document.querySelector('#calendar thead td:nth-child(2)').innerHTML =
+        monthTitles[month] + ' ' + year
+    document.querySelector('#calendar tbody').innerHTML = table
 
     function fillBefore() {
         for (let i = 0; i < getDay(date); i++) {
@@ -40,6 +52,11 @@ function createCalendar() {
             }
 
             date.setDate(date.getDate() + 1)
+
+            if (date.getDate() === new Date().getDate()) {
+                table += '<td class="today">'
+                continue
+            }
         }
     }
 
@@ -52,6 +69,26 @@ function createCalendar() {
     }
 }
 
-setDate()
+createCalendar()
 
-document.querySelector('div').innerHTML = createCalendar()
+document.querySelector(
+    '#calendar thead tr:nth-child(1) td:nth-child(1)'
+).onclick = function () {
+    month--
+    if (month < 0) {
+        month = 11
+        year--
+    }
+    createCalendar()
+}
+
+document.querySelector(
+    '#calendar thead tr:nth-child(1) td:nth-child(3)'
+).onclick = function () {
+    month++
+    if (month > 11) {
+        month = 0
+        year++
+    }
+    createCalendar()
+}
