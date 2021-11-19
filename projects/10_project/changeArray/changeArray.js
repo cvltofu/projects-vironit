@@ -1,16 +1,13 @@
-let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+let arr = [1, 2, 3, 4, 5, 6, 7]
 
 function changeArray(arr) {
     let changedArray = []
-    let even
     let right, left, centerIndex, centerNumber
 
     centerIndex = Math.floor(arr.length / 2)
     centerNumber = arr[centerIndex]
 
-    if (arr.length % 2 === 0) even = true
-
-    if (even) {
+    if (arr.length % 2 === 0) {
         right = arr.splice(centerIndex, centerIndex)
         left = arr.splice(0, centerIndex)
         changedArray = right.concat(left)

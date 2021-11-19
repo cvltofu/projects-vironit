@@ -8,37 +8,33 @@ let sum = (a, b, c) => {
         signB = '',
         signC = ''
 
-    if (a === 1) signA = ''
-    else if (a === -1) signA = '-'
-    else if (a > 0) signA = '-' + Math.abs(a)
-    else if (a < 0) signA = Math.abs(a)
-
-    if (b === 1) signB = '+'
-    else if (b === -1) signB = '-'
-    else if (b > 0) signB = '- ' + Math.abs(b)
-    else if (b < 0) signB = '+ ' + Math.abs(b)
-
+    if (a < 0) signA = '-'
+    if (b < 0) signB = '-'
+    else signB = '+'
     if (c < 0) signC = '-'
     else signC = '+'
 
     if (D < 0)
-        return `Уравнение ${signA}x^2 ${signB} x ${signC} ${Math.abs(
-            c
-        )} не имеет вещественных корней`
+        return `Уравнение ${signA}${Math.abs(a)}x^2 ${signB} ${Math.abs(
+            b
+        )}x ${signC} ${Math.abs(c)} не имеет вещественных корней`
     else if (D === 0)
-        return `Уравнение ${signA}x^2 ${signB} x ${signC} ${Math.abs(
-            c
-        )} имеет один корень x = ${(x1 = -(b / (2 * a)))}`
+        return `Уравнение ${signA}${Math.abs(a)}x^2 ${signB} ${Math.abs(
+            b
+        )}x ${signC} ${Math.abs(c)} имеет один корень x = ${(x1 = -(
+            b /
+            (2 * a)
+        ))}`
     else if (D > 0) {
-        return `Уравнение ${signA}x^2 ${signB}x ${signC} ${Math.abs(
-            c
-        )} имеет корни x1 = ${(x1 =
+        return `Уравнение ${signA}${Math.abs(a)}x^2 ${signB} ${Math.abs(
+            b
+        )}x ${signC} ${Math.abs(c)} имеет корни x1 = ${(x1 =
             (-b + Math.sqrt(D)) / (2 * a))} и x2 = ${(x2 =
             (-b - Math.sqrt(D)) / (2 * a))}`
     }
 }
 
-let a = 1,
+let a = -1,
     b = -8,
     c = 72
 

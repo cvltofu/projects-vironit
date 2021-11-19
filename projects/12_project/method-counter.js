@@ -1,15 +1,28 @@
-function getCounter(number) {
-    function log() {}
+class MethodCounter {
+    constructor() {}
 
-    function count(plusNumber) {
-        return number + plusNumber
+    getCounter(number) {
+        this.number = number
     }
 
-    function reset() {
-        return (number = 0)
+    log() {
+        console.log(this.number)
+        return this
+    }
+
+    count(addNumber) {
+        this.number += addNumber
+        return this
+    }
+
+    reset() {
+        this.number = 0
+        return this
     }
 }
 
-let counter = getCounter(5)
+let counter = new MethodCounter()
 
-counter.log()
+counter.getCounter(5)
+
+counter.log().count(4).count(4).log().reset().log().count(8).log()
