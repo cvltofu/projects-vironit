@@ -45,18 +45,21 @@ function createCalendar() {
 
     function fillWithDate() {
         while (date.getMonth() === month) {
-            table += '<td>' + date.getDate() + '</td>'
+            if (
+                date.getDate() === new Date().getDate() &&
+                date.getMonth() === new Date().getMonth() &&
+                date.getFullYear() === new Date().getFullYear()
+            ) {
+                table += '<td class="today">' + date.getDate()
+            } else {
+                table += '<td>' + date.getDate() + '</td>'
+            }
 
             if (getDay(date) === 6) {
                 table += '</tr><tr>'
             }
 
             date.setDate(date.getDate() + 1)
-
-            if (date.getDate() === new Date().getDate()) {
-                table += '<td class="today">'
-                continue
-            }
         }
     }
 
