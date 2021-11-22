@@ -17,10 +17,10 @@
 #calendar thead tr:nth-child(1) td:nth-child(2) {
     color: rgb(50, 50, 50);
 }
-#calendar thead tr:nth-child(1) td:nth-child(1):hover {
-    cursor: pointer;
-}
-#calendar thead tr:nth-child(1) td:nth-child(3):hover {
+#calendar thead tr:nth-child(1) td:nth-child(1):hover,
+#calendar thead tr:nth-child(1) td:nth-child(2):hover,
+#calendar thead tr:nth-child(1) td:nth-child(4):hover,
+#calendar thead tr:nth-child(1) td:nth-child(5):hover {
     cursor: pointer;
 }
 #calendar tbody td {

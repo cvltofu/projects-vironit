@@ -1,5 +1,12 @@
-document.addEventListener('click', function (event) {
-    if (event.target.dataset.counter != undefined) {
-        event.target.value++
-    }
-})
+function buttonsCounter() {
+    // let value = 1
+
+    // function count() {
+    //     value++
+    //     event.target.value = value
+    // }
+
+    // count()
+
+    ;+event.target.value++
+}

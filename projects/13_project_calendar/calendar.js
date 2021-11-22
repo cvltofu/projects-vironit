@@ -33,7 +33,7 @@ function createCalendar() {
     })()
     table += '</tr>'
 
-    document.querySelector('#calendar thead td:nth-child(2)').innerHTML =
+    document.querySelector('#calendar thead td:nth-child(3)').innerHTML =
         monthTitles[month] + ' ' + year
     document.querySelector('#calendar tbody').innerHTML = table
 
@@ -76,7 +76,21 @@ createCalendar()
 
 document.querySelector(
     '#calendar thead tr:nth-child(1) td:nth-child(1)'
-).onclick = function () {
+).onclick = () => {
+    year--
+    createCalendar()
+}
+
+document.querySelector(
+    '#calendar thead tr:nth-child(1) td:nth-child(5)'
+).onclick = () => {
+    year++
+    createCalendar()
+}
+
+document.querySelector(
+    '#calendar thead tr:nth-child(1) td:nth-child(2)'
+).onclick = () => {
     month--
     if (month < 0) {
         month = 11
@@ -86,8 +100,8 @@ document.querySelector(
 }
 
 document.querySelector(
-    '#calendar thead tr:nth-child(1) td:nth-child(3)'
-).onclick = function () {
+    '#calendar thead tr:nth-child(1) td:nth-child(4)'
+).onclick = () => {
     month++
     if (month > 11) {
         month = 0

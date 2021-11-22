@@ -1,26 +1,19 @@
-string = 'Аа ннн .ё'
+string = 'Аоооа ннн .ё'
 
 countVowelLetters(string)
 
-function countVowelLetters(string) {
-    let counter = 0
+function countVowelLetters(str) {
+    let arr_vowel_list = 'аеиоуыэюяё'.split('')
 
-    let stringArr = string.toLowerCase()
+    let count = 0
 
-    for (let i = 0; i < string.length; i++)
-        if (
-            stringArr[i] == 'а' ||
-            stringArr[i] == 'е' ||
-            stringArr[i] == 'и' ||
-            stringArr[i] == 'о' ||
-            stringArr[i] == 'у' ||
-            stringArr[i] == 'ы' ||
-            stringArr[i] == 'э' ||
-            stringArr[i] == 'ю' ||
-            stringArr[i] == 'я' ||
-            stringArr[i] == 'ё'
-        )
-            counter++
+    str.toLowerCase()
+        .split('')
+        .forEach((letter) => {
+            if (arr_vowel_list.indexOf(letter) !== -1) {
+                count++
+            }
+        })
 
-    console.log(counter)
+    console.log(count)
 }
