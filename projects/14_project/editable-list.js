@@ -29,7 +29,7 @@ function editValue() {
         item.addEventListener('click', (elem) => {
             let prevText = elem.target.innerText
 
-            elem.target.innerHTML = `<input type="text" class="input_text value ="${prevText}" />`
+            elem.target.innerHTML = `<input type="text" class="nput_text value ="${prevText}" />`
         })
     })
 }
