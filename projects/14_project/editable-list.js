@@ -28,8 +28,12 @@ function editValue() {
     document.querySelectorAll('.elem_list').forEach((item) => {
         item.addEventListener('click', (elem) => {
             let prevText = elem.target.innerText
+            elem.target.innerHTML = `<input type="text" class="editable_text" value ="${prevText}" />`
 
-            elem.target.innerHTML = `<input type="text" class="nput_text value ="${prevText}" />`
+            document.querySelector('.editable_text').onblur = () => {
+                elem.target.innerHTML =
+                    document.querySelector('.editable_text').value
+            }
         })
     })
 }

@@ -1,5 +1,5 @@
-#calendar {
-    /* position: absolute;
+div {
+    /* position: auto;
     top: 280px;
     left: 750px; */
     width: 15%;
@@ -10,28 +10,26 @@
     text-align: center;
     border: 2px solid rgb(0, 0, 0);
 }
-#calendar thead tr:last-child {
+div thead tr:last-child {
     font-size: small;
     color: rgb(85, 85, 85);
 }
-#calendar thead tr:nth-child(1) td:nth-child(2) {
-    color: rgb(50, 50, 50);
-}
-#calendar thead tr:nth-child(1) td:nth-child(1):hover,
-#calendar thead tr:nth-child(1) td:nth-child(2):hover,
-#calendar thead tr:nth-child(1) td:nth-child(4):hover,
-#calendar thead tr:nth-child(1) td:nth-child(5):hover {
+div thead tr:nth-child(1) td:nth-child(1):hover,
+div thead tr:nth-child(1) td:nth-child(2):hover,
+div thead tr:nth-child(1) td:nth-child(4):hover,
+div thead tr:nth-child(1) td:nth-child(5):hover {
     cursor: pointer;
 }
-#calendar tbody td {
+div tbody td {
+    width: 100px;
     color: rgb(0, 0, 0);
     background: rgb(236, 236, 236);
 }
-#calendar tbody td:nth-child(n + 6) {
+div tbody td:nth-child(n + 6) {
     color: rgb(255, 255, 255);
     background: rgb(74, 97, 161);
 }
-#calendar tbody td.today {
+div tbody td.today {
     border: 1px solid rgb(255, 255, 255);
     outline: 1px solid rgb(0, 0, 0);
     background: rgb(13, 19, 102);
