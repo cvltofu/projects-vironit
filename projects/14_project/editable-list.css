@@ -44,7 +44,7 @@
 }
 .input_button,
 .delete_button {
-    background-color: #707471; /* Green */
+    background-color: #707471;
     border: none;
     color: white;
     padding: 10px 25px;
@@ -52,12 +52,12 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
 .input_button:hover,
 .delete_button:hover {
-    background-color: #384b9f; /* Green */
+    background-color: #384b9f;
     color: white;
 }
 .disabled {
