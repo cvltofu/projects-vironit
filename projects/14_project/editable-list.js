@@ -9,6 +9,14 @@ function editableList(array) {
     let elems = array.map((element) => `<li>${element}</li>`)
 
     document.querySelector('.elem_list').innerHTML = elems.join('')
+
+    setIndexForLis()
+}
+
+function setIndexForLis() {
+    document.querySelectorAll('li').forEach((item, i) => {
+        item.id = i
+    })
 }
 
 function addValue() {
@@ -27,7 +35,17 @@ function addValue() {
 function editValue() {
     document.querySelectorAll('.elem_list').forEach((item) => {
         item.addEventListener('click', (elem) => {
-            elem.target.innerHTML = `<input type="text" class="editable_text" value ="${elem.target.innerText}" />`
+            let prevValue = elem.target.innerText
+            let currentLiIndex = elem.target.closest('li').id
+
+            if (elem.target.innerText !== '') {
+                elem.target.innerHTML = `<input type="text" class="editable_text" value ="${prevValue}" />`
+            }
+
+            elem.target.onblur = () => {
+                elem.target.closest('li').innerHTML = elem.target.value
+                array.splice(currentLiIndex, 1, elem.target.value)
+            }
         })
     })
 }

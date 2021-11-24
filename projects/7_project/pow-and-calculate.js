@@ -1,6 +1,6 @@
 function pow(x) {
     return function (y) {
-        if (y == 1) return x
+        if (y === 1) return x
         else return x * pow(x)(y - 1)
     }
 }
