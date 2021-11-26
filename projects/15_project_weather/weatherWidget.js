@@ -1,6 +1,6 @@
 import { createHtml } from './createHtml.js'
 
-class WeatherWidget {
+export class WeatherWidget {
     constructor(cityName, apiID, requestURL) {
         this.cityName = cityName
         this.apiID = apiID
@@ -8,7 +8,6 @@ class WeatherWidget {
     }
 
     async getWeather() {
-        //this.weather =
         await fetch(this.url)
             .then((response) => {
                 return response.json()
@@ -16,33 +15,52 @@ class WeatherWidget {
             .then((result) => {
                 this.setData(result)
             })
+            .then(() => this.showWidget())
             .catch((error) => {
                 console.log(error)
             })
     }
 
+    addData() {
+        document.querySelector('.date').innerHTML = this.date
+        document.querySelector('.year').innerHTML = this.year
+        document.querySelector('.place').innerHTML = this.place
+        document.querySelector('.temp_update').innerHTML = this.temp
+        document.querySelector('.weather_update').innerHTML = this.weather
+        document.querySelector('.wind_update').innerHTML = this.wind
+        document.querySelector('.humidity_update').innerHTML = this.humidity
+        document.querySelector('.image_insert').innerHTML = this.image
+    }
+
+    showWidget() {
+        document.querySelector('.show_button').addEventListener('click', () => {
+            createHtml()
+            this.addData()
+            this.closeWidget()
+        })
+    }
+
+    closeWidget() {
+        document
+            .querySelector('.close_button')
+            .addEventListener('click', () => {
+                document.querySelector(
+                    'body'
+                ).innerHTML = `<input value="Посмотреть погоду" type="button" class="show_button" />`
+                this.showWidget()
+            })
+    }
+
     setData(data) {
         console.log(data)
-        createHtml()
 
-        document.querySelector('.date').innerHTML = new Date().getDay()
-        document.querySelector('.year').innerHTML = new Date().getFullYear()
-        document.querySelector('.place').innerHTML = data.name
-        document.querySelector('.temp_update').innerHTML = `${Math.floor(
-            data.main.feels_like - 273.15
-        )} &#8451`
-        document.querySelector('.weather_update').innerHTML =
-            data.weather[0].main
-        document.querySelector('.wind_update').innerHTML = `${Math.floor(
-            data.wind.speed
-        )} М/с`
-        document.querySelector('.humidity_update').innerHTML =
-            data.main.humidity
+        this.date = new Date().getDay()
+        this.year = new Date().getFullYear()
+        this.place = data.name
+        this.temp = `${Math.floor(data.main.feels_like - 273.15)} &#8451`
+        this.weather = data.weather[0].description
+        this.wind = `${Math.floor(data.wind.speed)} М/с`
+        this.humidity = `${data.main.humidity}%`
+        this.image = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" class="image"/>`
     }
 }
-
-const cityName = 'Minsk'
-const apiID = 'cbef08d151a0723a1d9ce397ee7fbcf0'
-const requestURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiID}`
-
-const weather = new WeatherWidget(cityName, apiID, requestURL).getWeather()
