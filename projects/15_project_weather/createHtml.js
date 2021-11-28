@@ -35,5 +35,13 @@ export function createHtml() {
             </ul>
  
         </div>
+
+        <div class="lower">
+            <ul class="forecast">
+                <li class="today">Loading</li>
+                <li class="tomorrow">Loading</li>
+                <li class="day_after">Loading</li>
+            </ul>
+        </div>
     </div>`
 }

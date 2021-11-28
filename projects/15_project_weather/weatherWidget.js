@@ -5,6 +5,20 @@ export class WeatherWidget {
         this.cityName = cityName
         this.apiID = apiID
         this.url = requestURL
+        this.monthTitles = [
+            'января',
+            'февраля',
+            'марта',
+            'апреля',
+            'мая',
+            'июня',
+            'июля',
+            'августа',
+            'сентября',
+            'октября',
+            'ноября',
+            'декабря',
+        ]
     }
 
     async getWeather() {
@@ -22,7 +36,7 @@ export class WeatherWidget {
     }
 
     addData() {
-        document.querySelector('.date').innerHTML = this.date
+        document.querySelector('.date').innerHTML = `${this.date} ${this.month}`
         document.querySelector('.year').innerHTML = this.year
         document.querySelector('.place').innerHTML = this.place
         document.querySelector('.temp_update').innerHTML = this.temp
@@ -54,7 +68,8 @@ export class WeatherWidget {
     setData(data) {
         console.log(data)
 
-        this.date = new Date().getDay()
+        this.date = new Date().getDate()
+        this.month = this.monthTitles[new Date().getMonth()]
         this.year = new Date().getFullYear()
         this.place = data.name
         this.temp = `${Math.floor(data.main.feels_like - 273.15)} &#8451`
