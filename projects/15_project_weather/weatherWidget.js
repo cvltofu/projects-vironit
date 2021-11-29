@@ -1,4 +1,5 @@
-import { createHtml } from './createHtml.js'
+import { createHtmlForecast } from './createHtmlForecast.js'
+import { createHtmlToday } from './createHtmlToday.js'
 
 export class WeatherWidget {
     constructor(cityName, apiID, requestURL) {
@@ -6,7 +7,7 @@ export class WeatherWidget {
         this.apiID = apiID
         this.url = requestURL
         this.forecastURL =
-            'https://api.openweathermap.org/data/2.5/onecall?lat=53.9&lon=27.5667&exclude=minutely,hourly&appid=cbef08d151a0723a1d9ce397ee7fbcf0'
+            'https://api.openweathermap.org/data/2.5/onecall?lat=53.9&lon=27.5667&exclude=minutely,hourly&appid=cbef08d151a0723a1d9ce397ee7fbcf0&lang=ru'
         this.monthTitles = [
             'января',
             'февраля',
@@ -31,7 +32,9 @@ export class WeatherWidget {
             .then((result) => {
                 this.setTodayData(result)
             })
-            .then(() => this.showWidget())
+            .then(() => {
+                this.showWidget()
+            })
             .catch((error) => {
                 console.log(error)
             })
@@ -46,11 +49,14 @@ export class WeatherWidget {
                         return response.json()
                     })
                     .then((result) => {
-                        this.setForecastData()
+                        this.setForecastData(result)
                         console.log(result)
                     })
                     .then(() => {
                         this.showForecast()
+                    })
+                    .catch((error) => {
+                        console.log(error)
                     })
             })
     }
@@ -66,11 +72,38 @@ export class WeatherWidget {
         this.weather = data.weather[0].description
         this.wind = `${Math.floor(data.wind.speed)} М/с`
         this.humidity = `${data.main.humidity}%`
-        this.image = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" class="image"/>`
+        this.image = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" class="image_0"/>`
     }
 
-    setForecastData() {
-        console.log(this.dateForecast)
+    setForecastData(data) {
+        this.tempForecast = []
+        this.weatherForecast = []
+        this.windForecast = []
+        this.imageForecast = []
+        this.tempForecast[0] = `${Math.floor(
+            data.daily[0].feels_like.day - 273.15
+        )} &#8451`
+        this.tempForecast[1] = `${Math.floor(
+            data.daily[1].feels_like.day - 273.15
+        )} &#8451`
+        this.tempForecast[2] = `${Math.floor(
+            data.daily[2].feels_like.day - 273.15
+        )} &#8451`
+        this.weatherForecast[0] = data.daily[0].weather[0].description
+        this.weatherForecast[1] = data.daily[1].weather[0].description
+        this.weatherForecast[2] = data.daily[2].weather[0].description
+        this.windForecast[0] = `Ветер ${Math.floor(
+            data.daily[0].wind_speed
+        )} М/с`
+        this.windForecast[1] = `Ветер ${Math.floor(
+            data.daily[1].wind_speed
+        )} М/с`
+        this.windForecast[2] = `Ветер ${Math.floor(
+            data.daily[2].wind_speed
+        )} М/с`
+        this.imageForecast[0] = `<img src="http://openweathermap.org/img/wn/${data.daily[0].weather[0].icon}@2x.png" class="image_1"/>`
+        this.imageForecast[1] = `<img src="http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}@2x.png" class="image_2"/>`
+        this.imageForecast[2] = `<img src="http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}@2x.png" class="image_2"/>`
     }
 
     addTodayData() {
@@ -84,11 +117,32 @@ export class WeatherWidget {
         document.querySelector('.image_insert').innerHTML = this.image
     }
 
-    addForecastData() {}
+    addForecastData() {
+        document.querySelector('.temp_1').innerHTML = this.tempForecast[0]
+        document.querySelector('.temp_2').innerHTML = this.tempForecast[1]
+        document.querySelector('.temp_3').innerHTML = this.tempForecast[2]
+        document.querySelector('.weather_1').innerHTML = this.weatherForecast[0]
+        document.querySelector('.weather_2').innerHTML = this.weatherForecast[1]
+        document.querySelector('.weather_3').innerHTML = this.weatherForecast[2]
+        document.querySelector('.wind_1').innerHTML = this.windForecast[0]
+        document.querySelector('.wind_2').innerHTML = this.windForecast[1]
+        document.querySelector('.wind_3').innerHTML = this.windForecast[2]
+        document.querySelector(
+            '.title_forecast_1'
+        ).innerHTML = `Сегодня ${this.imageForecast[0]}`
+
+        document.querySelector(
+            '.title_forecast_2'
+        ).innerHTML = `Завтра ${this.imageForecast[1]}`
+
+        document.querySelector(
+            '.title_forecast_3'
+        ).innerHTML = `Послезавтра ${this.imageForecast[2]}`
+    }
 
     showWidget() {
         document.querySelector('.show_button').addEventListener('click', () => {
-            createHtml()
+            createHtmlToday()
             this.addTodayData()
             this.closeWidget()
             this.getForecast()
@@ -99,21 +153,53 @@ export class WeatherWidget {
         document
             .querySelector('.close_button')
             .addEventListener('click', () => {
-                document.querySelector(
-                    'body'
-                ).innerHTML = `<input value="Посмотреть погоду" type="button" class="show_button" />`
+                document.querySelector('body').innerHTML = `
+                <style>
+                    body {
+                        background: #919191;
+                        font-family: Montserrat, Arial, sans-serif;
+                    }
+                    .show_button {
+                        margin: 20px 20px;
+                        border-radius: 15px;
+                        background-color: #707471;
+                        border: none;
+                        color: white;
+                        padding: 5px 15px;
+                        text-align: center;
+                        text-decoration: none;
+                        font-size: 16px;
+                    }
+                    .show_button:hover {
+                        background-color: #6875c0;
+                        color: white;
+                    }
+                </style>
+
+                <input value="Посмотреть погоду" type="button" class="show_button" />`
+
                 this.showWidget()
             })
     }
 
     showForecast() {
-        document.querySelector('.lower').innerHTML = `
-        <input value="Закрыть прогноз" type="button" class="forecast_close_button" />
+        createHtmlForecast()
+        this.addForecastData()
+        this.closeForecast()
+    }
 
-        <ul class="forecast">
-            <li class="today">Loading</li>
-            <li class="tomorrow">Loading</li>
-            <li class="day_after">Loading</li>
-        </ul>`
+    closeForecast() {
+        document
+            .querySelector('.forecast_close_button')
+            .addEventListener('click', () => {
+                document.querySelector('.lower').innerHTML =
+                    '<input value="Прогноз на 3 дня" type="button" class="forecast_button" />'
+
+                document
+                    .querySelector('.forecast_button')
+                    .addEventListener('click', () => {
+                        this.showForecast()
+                    })
+            })
     }
 }

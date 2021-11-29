@@ -4,11 +4,32 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="weatherWidget.css" />
         <title>Document</title>
     </head>
     <body>
-        <input value="Посмотреть погоду" type="button" class="show_button" />
+        <style>
+            body {
+                background: #919191;
+                font-family: Montserrat, Arial, sans-serif;
+            }
+            .show_button {
+                margin: 20px 20px;
+                border-radius: 15px;
+                background-color: #707471;
+                border: none;
+                color: white;
+                padding: 5px 15px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+            }
+            .show_button:hover {
+                background-color: #6875c0;
+                color: white;
+            }
+        </style>
+
+        <input value="Посмотреть погоду" type="button" class="show_button" />`
 
         <script type="module" src="main.js"></script>
     </body>
