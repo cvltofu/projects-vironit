@@ -4,6 +4,11 @@ https://docs.google.com/document/d/1yqnJHWBxxE0Qq3j-0fvkuYsXnwuwH6ihe9mGjnRi6vY/
 
 https://docs.google.com/spreadsheets/d/1LPW0XBlB4hSW7i66_nx3bwKGqYE-CWRecM-YHzsI0Fo/edit#gid=0 - репы
 
+
+TypeScript, NODE.js почитать, посмотреть
+Курсы по node
+
+
 Почитать:
 Restfull архитектура, сокеты,
 Query string parameters, rest.api
