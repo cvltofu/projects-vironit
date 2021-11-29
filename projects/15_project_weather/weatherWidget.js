@@ -5,6 +5,8 @@ export class WeatherWidget {
         this.cityName = cityName
         this.apiID = apiID
         this.url = requestURL
+        this.forecastURL =
+            'https://api.openweathermap.org/data/2.5/onecall?lat=53.9&lon=27.5667&exclude=minutely,hourly&appid=cbef08d151a0723a1d9ce397ee7fbcf0'
         this.monthTitles = [
             'января',
             'февраля',
@@ -27,7 +29,7 @@ export class WeatherWidget {
                 return response.json()
             })
             .then((result) => {
-                this.setData(result)
+                this.setTodayData(result)
             })
             .then(() => this.showWidget())
             .catch((error) => {
@@ -35,7 +37,43 @@ export class WeatherWidget {
             })
     }
 
-    addData() {
+    async getForecast() {
+        document
+            .querySelector('.forecast_button')
+            .addEventListener('click', () => {
+                fetch(this.forecastURL)
+                    .then((response) => {
+                        return response.json()
+                    })
+                    .then((result) => {
+                        this.setForecastData()
+                        console.log(result)
+                    })
+                    .then(() => {
+                        this.showForecast()
+                    })
+            })
+    }
+
+    setTodayData(data) {
+        console.log(data)
+
+        this.date = new Date().getDate()
+        this.month = this.monthTitles[new Date().getMonth()]
+        this.year = new Date().getFullYear()
+        this.place = data.name
+        this.temp = `${Math.floor(data.main.feels_like - 273.15)} &#8451`
+        this.weather = data.weather[0].description
+        this.wind = `${Math.floor(data.wind.speed)} М/с`
+        this.humidity = `${data.main.humidity}%`
+        this.image = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" class="image"/>`
+    }
+
+    setForecastData() {
+        console.log(this.dateForecast)
+    }
+
+    addTodayData() {
         document.querySelector('.date').innerHTML = `${this.date} ${this.month}`
         document.querySelector('.year').innerHTML = this.year
         document.querySelector('.place').innerHTML = this.place
@@ -46,11 +84,14 @@ export class WeatherWidget {
         document.querySelector('.image_insert').innerHTML = this.image
     }
 
+    addForecastData() {}
+
     showWidget() {
         document.querySelector('.show_button').addEventListener('click', () => {
             createHtml()
-            this.addData()
+            this.addTodayData()
             this.closeWidget()
+            this.getForecast()
         })
     }
 
@@ -65,17 +106,14 @@ export class WeatherWidget {
             })
     }
 
-    setData(data) {
-        console.log(data)
+    showForecast() {
+        document.querySelector('.lower').innerHTML = `
+        <input value="Закрыть прогноз" type="button" class="forecast_close_button" />
 
-        this.date = new Date().getDate()
-        this.month = this.monthTitles[new Date().getMonth()]
-        this.year = new Date().getFullYear()
-        this.place = data.name
-        this.temp = `${Math.floor(data.main.feels_like - 273.15)} &#8451`
-        this.weather = data.weather[0].description
-        this.wind = `${Math.floor(data.wind.speed)} М/с`
-        this.humidity = `${data.main.humidity}%`
-        this.image = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" class="image"/>`
+        <ul class="forecast">
+            <li class="today">Loading</li>
+            <li class="tomorrow">Loading</li>
+            <li class="day_after">Loading</li>
+        </ul>`
     }
 }

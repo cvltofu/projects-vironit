@@ -37,11 +37,9 @@ export function createHtml() {
         </div>
 
         <div class="lower">
-            <ul class="forecast">
-                <li class="today">Loading</li>
-                <li class="tomorrow">Loading</li>
-                <li class="day_after">Loading</li>
-            </ul>
+            <input value="Прогноз на 3 дня" type="button" class="forecast_button" />          
         </div>
+
+        
     </div>`
 }

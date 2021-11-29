@@ -4,7 +4,6 @@
     margin: 0;
     padding: 0;
 }
-
 body {
     background: #919191;
     font-family: Montserrat, Arial, sans-serif;
@@ -24,6 +23,14 @@ h2 {
     background: #cccccc;
     height: 200px;
     padding: 20px;
+}
+.lower {
+    background: #6875c0;
+    border-radius: 0 0 5px 5px;
+    font-family: 'Advent Pro';
+    font-weight: 200;
+    height: 130px;
+    width: 100%;
 }
 .date {
     font-size: 40px;
@@ -70,22 +77,21 @@ h2 {
     text-align: center;
     margin-right: 10px;
 }
-.lower {
-    background: #6875c0;
-    border-radius: 0 0 5px 5px;
-    font-family: 'Advent Pro';
-    font-weight: 200;
-    height: 130px;
-    width: 100%;
+.forecast li {
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 90px;
+    margin-left: 10px;
+    font-size: 20px;
 }
-
 .image {
     position: absolute;
     left: 80%;
     top: 45%;
     width: 20%;
 }
-
 .show_button {
     margin: 20px 20px;
     border-radius: 15px;
@@ -109,6 +115,32 @@ h2 {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+}
+.forecast_button {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    border-radius: 15px;
+    background-color: #707471;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+}
+.forecast_close_button {
+    position: absolute;
+    left: 190px;
+    bottom: 20px;
+    border-radius: 15px;
+    background-color: #707471;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+}
+.forecast_button:hover {
+    background-color: #969696;
+    color: white;
 }
 .show_button:hover,
 .close_button:hover {
