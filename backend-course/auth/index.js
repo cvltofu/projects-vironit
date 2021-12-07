@@ -1,23 +1,19 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import router from './router.js';
+import AuthRouter from './AuthRouter.js';
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const DB_URL = `mongodb+srv://user:user@cluster0.f8r7e.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-
 const app = express();
 
 app.use(express.json());
-app.use('/api', router);
+app.use('/auth', AuthRouter);
 
 async function startApp() {
     try {
-        await mongoose.connect(DB_URL, {
-            useUnifiedTopology: true,
-            useNewUrlParser: true,
-        });
+        await mongoose.connect(DB_URL);
         app.listen(PORT, () => {
-            console.log(`SERVER STARTED ON PORT ${PORT}`);
+            console.log(`Server started on port ${PORT}`);
         });
     } catch (e) {
         console.log(e);
