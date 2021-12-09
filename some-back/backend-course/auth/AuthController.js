@@ -55,7 +55,7 @@ class AuthController {
             if (!user) {
                 return res
                     .status(400)
-                    .json({ message: `User ${username} not find` });
+                    .json({ message: `User ${username} not found` });
             }
 
             const validPassword = bcrypt.compareSync(password, user.password);
