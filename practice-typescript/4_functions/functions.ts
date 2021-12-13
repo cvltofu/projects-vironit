@@ -12,7 +12,7 @@ interface myPosition {
 }
 
 interface myPositionWithDefault extends myPosition {
-    default: string;
+    default: number;
 }
 
 function position(): myPosition;

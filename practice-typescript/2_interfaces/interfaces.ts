@@ -1,7 +1,7 @@
 interface Rect {
     //Только для чтения (readonly)
     readonly id: string;
-    //Необязательный параметр (?)//Необязательный параметр (?)
+    //Необязательный параметр (?)
     color?: string;
     size: {
         width: number;
