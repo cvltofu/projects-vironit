@@ -1,0 +1,11 @@
+<app-todos-list
+  *ngIf="!todoItem"
+  [todoList]="todoList"
+  (onChangedList)="setItem($event)"
+></app-todos-list>
+
+<app-todos-item
+  *ngIf="todoItem"
+  [todoItem]="todoItem"
+  (onChangedItem)="unsetItem()"
+></app-todos-item>
