@@ -3,19 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodosComponent } from './components/todos/todos/todos.component';
-import { TodosListComponent } from './components/todos/todolist/todoslist.component';
-import { TodoItemComponent } from './components/todos/todoitem/todoitem.component';
+import { TodosModule } from './components/todos/todos.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodosComponent,
-    TodosListComponent,
-    TodoItemComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, TodosModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
