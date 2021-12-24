@@ -1,4 +1,4 @@
-import UserModel from '../models/user-model.js';
+import userModel from '../models/user-model.js';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 import mailService from './mail-service.js';
@@ -8,7 +8,7 @@ import ApiError from '../exceptions/api-error.js';
 
 class UserService {
     async registration(email, password) {
-        const candidate = await UserModel.findOne({ email });
+        const candidate = await userModel.findOne({ email });
         if (candidate) {
             throw ApiError.BadRequest(
                 `Пользователь с email ${email} уже существует`
@@ -18,7 +18,7 @@ class UserService {
         const hashPassword = await bcrypt.hash(password, 3);
         const activationLink = uuidv4();
 
-        const user = await UserModel.create({
+        const user = await userModel.create({
             email,
             password: hashPassword,
             activationLink,
@@ -40,7 +40,7 @@ class UserService {
     }
 
     async activate(activationLink) {
-        const user = await UserModel.findOne({ activationLink });
+        const user = await userModel.findOne({ activationLink });
 
         if (!user) {
             throw ApiError.BadRequest('Некорректная ссылка активации');
@@ -51,7 +51,7 @@ class UserService {
     }
 
     async login(email, password) {
-        const user = await UserModel.findOne({ email });
+        const user = await userModel.findOne({ email });
 
         if (!user) {
             throw ApiError.BadRequest('Пользователь с таким email не найден');
@@ -88,7 +88,7 @@ class UserService {
             throw ApiError.UnauthorizedError();
         }
 
-        const user = await UserModel.findById(userData.id);
+        const user = await userModel.findById(userData.id);
         const userDto = new UserDto(user);
         const tokens = tokenService.generateTokens({ ...userDto });
 
@@ -98,7 +98,7 @@ class UserService {
     }
 
     async getAllUsers() {
-        const users = await UserModel.find();
+        const users = await userModel.find();
 
         return users;
     }

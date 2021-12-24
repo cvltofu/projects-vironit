@@ -1,0 +1,19 @@
+h1 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  letter-spacing: 1px;
+  width: 100%;
+  color: #465457;
+}
+button {
+  color: #fff;
+  background: rgb(212, 75, 56);
+  border-radius: 6px;
+  border-style: none;
+  padding: 0.7em 1.5em;
+}
+button:hover {
+  background: rgb(232, 95, 76);
+}
+button:active {
+  background: rgb(152, 15, 0);
+}

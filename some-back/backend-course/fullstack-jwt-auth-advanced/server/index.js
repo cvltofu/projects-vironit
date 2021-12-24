@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
+// var cors = require('cors');
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import router from './routers/index.js';
@@ -12,12 +13,14 @@ const PORT = process.env.PORT || 6000;
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-    cors({
-        credentials: true,
-        origin: process.env.CLIENT_URL,
-    })
-);
+// app.use(
+//     cors({
+//         credentials: true,
+//         origin: process.env.CLIENT_URL,
+//     })
+// );
+app.use(cors());
+app.options('*', cors());
 app.use('/api', router);
 app.use(errorMiddleware);
 

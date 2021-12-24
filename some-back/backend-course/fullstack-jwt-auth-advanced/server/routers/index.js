@@ -1,5 +1,6 @@
 import Router from 'express';
 import userController from '../controllers/user-controller.js';
+import todoController from '../controllers/todo-controller.js';
 import { body } from 'express-validator';
 import authMiddleware from '../middlewares/auth-middleware.js';
 
@@ -16,5 +17,6 @@ router.post('/logout', userController.logout);
 router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
+router.get('/todos', todoController.getTodos);
 
 export default router;

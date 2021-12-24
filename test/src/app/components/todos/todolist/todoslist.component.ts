@@ -4,6 +4,7 @@ import { Todo } from '../interfaces/todo.interface';
 @Component({
   selector: 'app-todos-list',
   templateUrl: './todolist.component.html',
+  styleUrls: ['./todolist.component.css'],
 })
 export class TodosListComponent {
   @Input() todoList!: Todo[];
