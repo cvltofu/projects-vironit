@@ -1,4 +1,4 @@
-export default class userDto {
+export default class UserDto {
     email;
     id;
     isActivated;

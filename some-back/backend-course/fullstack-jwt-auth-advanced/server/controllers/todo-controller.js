@@ -10,6 +10,17 @@ class TodoController {
             next(e);
         }
     }
+
+    async postTodos(req, res, next) {
+        try {
+            const { date, title, task } = req.body;
+            const todo = await todosService.postTodos(date, title, task);
+
+            return res.json(todo);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 export default new TodoController();

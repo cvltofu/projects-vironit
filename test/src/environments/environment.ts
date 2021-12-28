@@ -6,7 +6,7 @@ export const environment = {
   production: false,
 };
 
-export const apiUrl = 'http://localhost:5000/api/todos';
+export const apiUrl = 'http://localhost:5000/api/todos/';
 
 /*
  * For easier debugging in development mode, you can import the following file

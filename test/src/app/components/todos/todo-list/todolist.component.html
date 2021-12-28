@@ -1,0 +1,26 @@
+<h3>TODOSLIST</h3>
+<table border="1" cellspacing="1" cellpadding="10">
+  <tr *ngFor="let item of todoList; let i = index" (click)="showTodo(item)">
+    <td>{{ item.date | date }}</td>
+    <td>{{ item.title }}</td>
+    <td>{{ item.task }}</td>
+  </tr>
+</table>
+<hr />
+<table border="1" cellspacing="1" cellpadding="10">
+  <tr>
+    <td>
+      <input size="1" [(ngModel)]="date.day" />
+      <input size="1" [(ngModel)]="date.month" />
+      <input size="4" [(ngModel)]="date.year" />
+    </td>
+    <td>
+      <input name="title" [(ngModel)]="todoAdd.title" />
+    </td>
+    <td>
+      <input name="task" [(ngModel)]="todoAdd.task" />
+    </td>
+  </tr>
+</table>
+<hr />
+<button (click)="changeTodo()">Добавить {{ date.day }}</button>

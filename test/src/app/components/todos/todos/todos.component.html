@@ -2,6 +2,7 @@
   *ngIf="!todoItem"
   [todoList]="todoList"
   (onChangedList)="setItem($event)"
+  (onClickAdd)="postItem($event)"
 ></app-todos-list>
 
 <app-todos-item

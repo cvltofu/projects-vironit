@@ -20,12 +20,13 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  //  = [
-  //   {
-  //     date: new Date(),
-  //     title: 'First',
-  //     task: 'do first',
-  //   },
+  postItem(todo: Todo) {
+    this.todosService.postTodo(todo).subscribe(() => {
+      this.todosService.getTodosList().subscribe((value) => {
+        this.todoList = value;
+      });
+    });
+  }
 
   setItem(todo: Todo) {
     this.todoItem = todo;
