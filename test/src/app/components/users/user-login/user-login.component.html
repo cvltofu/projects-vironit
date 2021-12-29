@@ -1,0 +1,20 @@
+<h3>LOGIN</h3>
+<div>
+  <input
+    placeholder="E-mail"
+    class="email"
+    size="10"
+    [(ngModel)]="user.email"
+  />
+</div>
+<div>
+  <input
+    placeholder="Password"
+    type="password"
+    class="password"
+    size="10"
+    [(ngModel)]="user.password"
+  />
+</div>
+
+<button class="loginButton" (click)="login()">Войти</button>

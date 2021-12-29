@@ -21,6 +21,16 @@ class TodoController {
             next(e);
         }
     }
+
+    async deleteTodos(req, res, next) {
+        try {
+            const todo = await todosService.deleteTodos(req.params.id);
+
+            return res.json(todo);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 export default new TodoController();

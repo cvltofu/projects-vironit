@@ -3,7 +3,7 @@ import todoModel from '../models/todo-model.js';
 
 class TodosService {
     async getTodos() {
-        const todos = await todoModel.find();
+        const todos = await todoModel.find({}, null, { limit: 10 });
 
         return todos;
     }
@@ -18,6 +18,12 @@ class TodosService {
         const todoDto = new TodoDto(todo);
 
         return { todo: todoDto };
+    }
+
+    async deleteTodos(_id) {
+        const todo = await todoModel.findByIdAndDelete(_id);
+
+        return todo;
     }
 }
 

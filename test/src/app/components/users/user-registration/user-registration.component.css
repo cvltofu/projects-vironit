@@ -1,0 +1,47 @@
+h3 {
+  position: absolute;
+  left: 38%;
+  top: 20%;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  text-align: center;
+  margin: 5px;
+  padding: 10px 10px;
+}
+.email,
+.password {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 16;
+  width: 20%;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  border: 2px solid rgb(73, 71, 71);
+}
+.email {
+  position: absolute;
+  left: 38%;
+  top: 25%;
+}
+.password {
+  position: absolute;
+  left: 38%;
+  top: 30%;
+}
+.registrationButton {
+  position: absolute;
+  left: 52%;
+  top: 35%;
+  width: auto;
+  color: #fff;
+  background: rgb(212, 75, 56);
+  border-radius: 6px;
+  border-style: none;
+  padding: 0.7em 1.5em;
+  margin: 10px 5px;
+}
+button:hover {
+  background: rgb(232, 95, 76);
+}
+button:active {
+  background: rgb(152, 15, 0);
+}

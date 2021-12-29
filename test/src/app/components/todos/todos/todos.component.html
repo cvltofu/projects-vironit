@@ -3,6 +3,7 @@
   [todoList]="todoList"
   (onChangedList)="setItem($event)"
   (onClickAdd)="postItem($event)"
+  (onClickDelete)="deleteItem($event)"
 ></app-todos-list>
 
 <app-todos-item

@@ -19,5 +19,6 @@ router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
 router.get('/todos/', todoController.getTodos);
 router.post('/todos/', todoController.postTodos);
+router.delete('/todos/:id', todoController.deleteTodos);
 
 export default router;

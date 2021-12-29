@@ -12,21 +12,24 @@ export class TodosListComponent {
   @Input() todoList!: Todo[];
   @Output() onChangedList = new EventEmitter();
   @Output() onClickAdd = new EventEmitter();
+  @Output() onClickDelete = new EventEmitter();
 
-  todoAdd: Todo = { date: new Date(), title: '', task: '' };
+  todoAdd: Todo = { date: new Date(), title: '', task: '', _id: '' };
   date: IDate = { day: 0, month: 0, year: 0, date: '' };
 
   showTodo(todo: Todo) {
     this.onChangedList.emit(todo);
   }
 
-  changeTodo() {
+  deleteTodo(_id: string) {
+    this.onClickDelete.emit(_id);
+  }
+
+  addTodo() {
     this.date.date = `${this.date.year}-${this.date.month}-${this.date.day}`;
     const num = Date.parse(this.date.date);
     this.todoAdd.date = new Date(num);
 
     this.onClickAdd.emit(this.todoAdd);
   }
-
-  addTodo() {}
 }
