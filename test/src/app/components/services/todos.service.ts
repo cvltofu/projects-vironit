@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { apiUrlTodos } from 'src/environments/environment';
 import { Todo } from '../todos/interfaces/todo.interface';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TodosService {
   private apiUrlTodos = apiUrlTodos;
 

@@ -4,8 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodosModule } from './components/todos/todos.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UsersModule } from './components/users/users.module';
+import { TokenInterceptor } from './components/classes/token.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,13 @@ import { UsersModule } from './components/users/users.module';
     TodosModule,
     UsersModule,
     HttpClientModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor,
+    },
   ],
   bootstrap: [AppComponent],
 })

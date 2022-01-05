@@ -1,6 +1,6 @@
 h3 {
   position: absolute;
-  left: 38%;
+  left: 43%;
   top: 20%;
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   text-align: center;
@@ -11,7 +11,7 @@ h3 {
 .password {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 16;
-  width: 20%;
+  width: auto;
   padding: 10px;
   margin: 5px;
   border-radius: 10px;
@@ -19,13 +19,19 @@ h3 {
 }
 .email {
   position: absolute;
-  left: 38%;
+  left: 43%;
   top: 25%;
 }
 .password {
   position: absolute;
-  left: 38%;
+  left: 43%;
   top: 30%;
+}
+input.ng-touched.ng-invalid {
+  border: solid red 2px;
+}
+input.ng-touched.ng-valid {
+  border: solid green 2px;
 }
 .loginButton {
   position: absolute;
@@ -38,8 +44,12 @@ h3 {
   border-style: none;
   padding: 0.7em 1.5em;
   margin: 10px 5px;
+  cursor: pointer;
 }
-button:hover {
+button[disabled] {
+  background: rgb(184, 120, 112);
+}
+button:hover[disabled="false"] {
   background: rgb(232, 95, 76);
 }
 button:active {

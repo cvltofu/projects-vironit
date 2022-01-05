@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { IUser } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-user-registration',
   templateUrl: './user-registration.component.html',
   styleUrls: ['./user-registration.component.css'],
-  providers: [UsersService],
 })
 export class UserRegistrationComponent {
-  constructor(private usersService: UsersService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   user: IUser = { email: '', password: '' };
 
   registration(): void {
-    this.usersService.registration(this.user).subscribe(() => {});
+    this.authService.registration(this.user);
+
+    alert('На указанную почту выслано письмо подтверждения.');
   }
 }

@@ -7,7 +7,6 @@ import { Todo } from '../interfaces/todo.interface';
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
-  providers: [TodosService],
 })
 export class TodosComponent implements OnInit {
   constructor(private todosService: TodosService) {}

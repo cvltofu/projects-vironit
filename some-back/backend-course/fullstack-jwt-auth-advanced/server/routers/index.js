@@ -17,8 +17,8 @@ router.post('/logout', userController.logout);
 router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
-router.get('/todos/', todoController.getTodos);
-router.post('/todos/', todoController.postTodos);
-router.delete('/todos/:id', todoController.deleteTodos);
+router.get('/todos/', authMiddleware, todoController.getTodos);
+router.post('/todos/', authMiddleware, todoController.postTodos);
+router.delete('/todos/:id', authMiddleware, todoController.deleteTodos);
 
 export default router;
