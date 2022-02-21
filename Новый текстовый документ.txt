@@ -1,0 +1,7 @@
+1. Мастер-ветка. Создание проекта и установка TS. Initial commit
+2. Создаем dev ветку от master. Ставим Eslint, prettier, (husky). Commit
+3. Ветка DB. Подключение БД и описание моделей. Commit. Merge dev
+4. Ветка base-architecture. Описание контроллеров, роутеров, сервисов. Commit. Merge dev
+5. Ветка error-handler. Commit. Merge dev
+6. Ветка registration. Функция регистрации, сервис регистрации. Commit. Merge dev
+7.
