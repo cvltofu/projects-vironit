@@ -18,3 +18,16 @@ https://docs.google.com/spreadsheets/d/1LPW0XBlB4hSW7i66_nx3bwKGqYE-CWRecM-YHzsI
 
 -   видос про эвент луп на русском
     https://www.youtube.com/watch?v=8aGhZQkoFbQ&ab_channel=JSConf
+    
+    
+https://account.mongodb.com/account/login?n=%2Fv2%2F61adfb6a0af38f59fd0af1bc%23metrics%2FreplicaSet%2F61c598e3ed2ce7233965579d%2Fexplorer%2Fauthorization%2Ftokens%2Ffind
+
+https://www.youtube.com/watch?v=RCJPtZKcCuY&list=PL_euSNU_eLbdg0gKbR8zmVJb4xLgHR7BX&index=20&ab_channel=LeelaWebDev
+
+https://www.youtube.com/watch?v=D2YRaYy0yu8&list=PL4rYLeYunVf3CZGMOXaQdZrA5VvP81kx-&index=26&ab_channel=%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%93%D1%80%D0%BE%D0%BC
+
+https://www.youtube.com/watch?v=5p5PblS4uu4&list=PLfamdLYuDv-La8beiivaKGjQeXRr8EV5L&index=12&ab_channel=Codeible
+
+https://www.youtube.com/watch?v=fN25fMQZ2v0&ab_channel=UlbiTV
+
+https://www.youtube.com/watch?v=EL5_oDQv_4w&list=PLo_TKgaR3o1HDJGZbxAGXbBF8dCBmTWnm&index=8&ab_channel=%D0%A1%D0%B5%D1%80%D0%B3%D0%B5%D0%B9%D0%A2%D1%8E%D1%82%D1%87%D0%B5%D0%B2
